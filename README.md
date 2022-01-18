@@ -78,6 +78,6 @@ Anyone can open [issues](https://github.com/SDIAlliance/carbon-footprint-ssa/iss
 * [ICT scope standards (1450)](https://www.itu.int/rec/T-REC-L.1450-201809-I/en)
 * [ICT scope standards (1470)](https://www.itu.int/rec/T-REC-L.1470/en)
 * [ICT scope standards (1410)](https://www.itu.int/rec/T-REC-L.1410/en)
-* [Green Cloud Computing - German Environmental Protection Agency](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/* 2021-06-17_texte_94-2021_green-cloud-computing.pdf)
+* [Green Cloud Computing - German Environmental Protection Agency](https://www.umweltbundesamt.de/sites/default/files/medien/5750/publikationen/2021-06-17_texte_94-2021_green-cloud-computing.pdf)
 * [Guidance on GHG Protocol](https://ghgprotocol.org/guidance-built-ghg-protocol)
 * [GHG Protocol](https://www.ghgprotocol.org/sites/default/files/ghgp/GHGP-ICTSG%20-%20ALL%20Chapters.pdf)
