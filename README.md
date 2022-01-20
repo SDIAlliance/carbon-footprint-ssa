@@ -65,6 +65,14 @@ The open data hub, operated as a public data repository by the [SDIA](https://sd
 
 In order to ensure that the carbon footprints are calculated using the same methodology across different environments, we are working on an open standard which can be continously improved as we learn more about the footprint of software. The standard is developed by the members of the SG as part of a monthly meeting. Anyone can contribute, please see participation below.
 
+### Drafts
+
+For the time being, we have decided to focus on the environmental footprint, specifically energy-use and embodied carbon of servers.
+
+As the precision of data available to convert electrical power into carbon emissions (e.g. based on values reported by the grid) is very low, we find it more useful to simply measure the power consumption itself, instead of using carbon emissions as a potentially misleading proxy.
+
+* [0.1.0 Draft Environmental Footprint](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/environmental_footprint.v0.1.0.md)
+
 <a name="participation"></a>
 
 ## Participation
