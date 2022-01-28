@@ -29,7 +29,7 @@ The challenge now is to bring together a virtual machine, or more bleeding-edge,
 
 Therefore we have chosen (for now) to build an architecture around the [Observer][8] pattern, whereby each part of the system reports its relevant metrics to an Agent (the observer), which, using the collected information, in turn provides each part with a the information on the actual power consumption.
 
-\<img src="https://docs.google.com/drawings/d/e/2PACX-1vTL2svMiZCM1z1DRSv7A90_qCyT8Q6bvcAcuroxOly8hgRxfzdIKS6t-CVSAK7sEc1kWs549degfBjk/pub?w=1552&amp;h=843"\>
+![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vTL2svMiZCM1z1DRSv7A90_qCyT8Q6bvcAcuroxOly8hgRxfzdIKS6t-CVSAK7sEc1kWs549degfBjk/pub?w=1552&amp;h=843)
 
 The observer (The Environmental Footprint Data Agent - EFD-Agent) thus records three types of time-series through observation:
 
