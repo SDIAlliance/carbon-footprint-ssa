@@ -59,6 +59,51 @@ paths:
             application/json:
               schema:
                 $ref: ../models/Carbon-Footprint.yaml
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_message:
+                    type: string
+              examples:
+                Missing any filters:
+                  value:
+                    error_message: 'At least one filter parameter has to be given: k8s_pod_uuid, os_instance_id or start_time'
+        '406':
+          description: Not Acceptable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        param:
+                          type: string
+                        message:
+                          type: string
+                      required:
+                        - param
+                        - message
+                required:
+                  - errors
+              examples:
+                K8s Pod UUID invalid:
+                  value:
+                    errors:
+                      - param: k8s_pod_uuid
+                        message: Invalid pod uuid or not found.
+                Invalid start_time or end_time:
+                  value:
+                    errors:
+                      param: start_time
+                      message: is not a valid unix timestamp.
   '':
     parameters: []
 components:
