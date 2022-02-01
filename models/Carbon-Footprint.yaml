@@ -1,0 +1,48 @@
+title: Carbon Footprint
+type: object
+examples:
+  - total_emissions: 123
+    total_power_consumption: 5423
+    total_embedded_emissions: 12
+    total_operational_emissions: 111
+properties:
+  total_calculated_emissions:
+    type: number
+    description: 'Contains the total emissions in kilograms, considering power consumption and embedded emissions of your request.'
+    format: float
+    default: 0
+    readOnly: true
+  emission_calculation_data:
+    type: object
+    description: Contains the detailed information that was used to calculate the emissions for your query.
+    additionalProperties: false
+    properties:
+      total_power_consumption:
+        type: number
+        description: 'Returns the total power consumption attributed to the query, pod, virtual machine or server. It contains the overhead power consumption of the underlying data center (if available, otherwise uses a constant), all in kWh'
+        format: float
+        default: 0
+        readOnly: true
+      total_embedded_emissions:
+        type: number
+        description: Returns only the embedded emissions in kilograms of the underlying server
+        format: float
+        default: 0
+        readOnly: true
+      total_operational_emissions:
+        type: number
+        description: Returns only the emissions caused by the electricity (based on available information of the power grid in the location of the data center) in kilograms
+        format: float
+        default: 0
+        readOnly: true
+      electricity_carbon_intensity:
+        type: number
+        description: Allows you to determine how the operational emissions have been calculated (in grams/kWh)
+        format: float
+        default: 0
+        readOnly: true
+    readOnly: true
+required:
+  - total_calculated_emissions
+  - emission_calculation_data
+description: The data model for returning carbon footproint information for a request. It contains the total carbon emissions as well as the data that was used to calculate it (to ensure transparency).
