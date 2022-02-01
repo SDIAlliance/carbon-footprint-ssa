@@ -121,6 +121,8 @@ paths:
                     errors:
                       - param: k8s_pod_uuids
                         message: 'contains an invalid UUID or not found: the-uuid-should-be-here'
+        '500':
+          description: Internal Server Error
   '':
     parameters: []
 components:
