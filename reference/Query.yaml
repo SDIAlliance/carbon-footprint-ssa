@@ -102,8 +102,25 @@ paths:
                 Invalid start_time or end_time:
                   value:
                     errors:
-                      param: start_time
-                      message: is not a valid unix timestamp.
+                      - param: start_time
+                        message: is not a valid unix timestamp
+                      - param: end_time
+                        message: is not a valid unix timestamp
+                Invalid OpenStack Instance:
+                  value:
+                    errors:
+                      - param: os_instance_id
+                        message: invalid instance identifier or not found
+                K8s Pod UUIDs not an array:
+                  value:
+                    errors:
+                      - param: k8s_pod_uuids
+                        message: must be an array of UUIDs
+                K8 Pod UUIDs contains invalid UUID:
+                  value:
+                    errors:
+                      - param: k8s_pod_uuids
+                        message: 'contains an invalid UUID or not found: the-uuid-should-be-here'
   '':
     parameters: []
 components:
