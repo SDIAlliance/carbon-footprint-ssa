@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Resource Utilization
+  version: 1.0.0
+  summary: Use this API to report resource utilization metrics
+  description: 'The Resource Usage API is used to report the actually used resources by a pod, container, virtual or even dedicated machine. Resource usage is expressed in 4 metrics: CPU Utilization (%), Memory (MB), Storage (GB), Network Bandwidth (kbps).'
+  contact:
+    name: Max Schulze
+    url: sdialliance.org
+    email: community@sdialliance.org
+  termsOfService: 'https://sdialliance.org'
+  license:
+    name: GPLv3
+    url: 'https://www.gnu.org/licenses/gpl-3.0.en.html'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /resource-utilization:
+    post:
+      summary: ''
+      operationId: post-resource-utilization
+      responses:
+        '200':
+          description: OK
+      description: 'Report the current resource utilization of resource-consuming entity (container, virtual machine, pod)'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourceUsage'
+components:
+  schemas:
+    ResourceUsage:
+      title: ResourceUsage
+      type: object
+      description: A data model for reporting the resource usage of a resource-consuming entity
+      properties:
+        type:
+          type: string
+          enum:
+            - kubernetes_pod
+            - docker_container
+            - openstack_instance
+            - vmware_vm
+            - physical_server
+          description: Select the type of resource consuming entity
+        tick_timestamp:
+          type: integer
+          example: '1643832368175'
+          description: 'Millisecond unix timestamp, defaults to now'
+          format: int32
+        cpu_usage:
+          type: number
+          description: percentage of cpu_usage
+          format: float
+          minimum: 0
+          default: 0
+        memory_usage:
+          type: number
+          format: float
+          description: Memory usage in megabytes
+          minimum: 0
+          default: 0
+        storage_usage:
+          type: number
+          format: float
+          minimum: 0
+          description: Storage usage in gigabytes
+          default: 0
+        k8_pod_identifier:
+          type: string
+          format: uuid
+          description: the pod UUID
+        server_identifier:
+          type: string
+          description: 'The identifier of the server, e.g. ID generated'
+        os_instance_id:
+          type: string
+          description: OpenStack instance identifier
+        docker_container_id:
+          type: string
+          description: Docker container identifier
+      required:
+        - type
