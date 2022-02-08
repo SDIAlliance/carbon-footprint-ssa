@@ -33,15 +33,14 @@ Therefore we have chosen (for now) to build an architecture around the [Observer
 
 The observer (The Environmental Footprint Data Agent - EFD-Agent) thus records three types of time-series through observation:
 
-* A time-series of power consumption (kW per second)
+* A time-series of [power consumption](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/power_consumption_resolver.md) (kW per second)
 * A time-series of resource utilization (CPU, memory, storage & network capacity) of a pod or virtual machine
 * A time-series of the schedule on which virtual machines and pods where running (e.g. recording when they started and stopped)
 
-Combining these three time series with a solver that attributes the different resource types to the power consumption (e.g. 60% to CPU, 20% to memory, 10% to storage, 10% to the network) then leads us to be able to determine how much power a pod or virtual machine was consuming, based on it’s resource use, while it was running.
+Combining these three time series with a [solver that attributes the different resource types to the power consumption](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/resource_allocation_resolver.md) (e.g. 60% to CPU, 20% to memory, 10% to storage, 10% to the network) then leads us to be able to determine how much power a pod or virtual machine was consuming, based on it’s resource use, while it was running. Even better: It allows us to measure the opposite as well - how much power was wasted on idling/non-use of available resources.
 
-\# TODO: Link to the solver for allocating the resource types to power usage (constant)
-
-Even better: It allows us to measure the opposite as well - how much power was wasted on idling/non-use of available resources.
+* [The solver is described further in this document](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/resource_allocation_resolver.md)
+* [Our approach & fallback to power consumption measurement is here](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/power_consumption_resolver.md)
 
 The API specification in this repository defines the APIs necessary within the EFD Agent:
 
