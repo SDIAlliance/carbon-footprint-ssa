@@ -38,3 +38,16 @@ For now therefore we settle on the following ratio’s:
 | Storage | 10% |
 | Network | 5% |
 | GPU | excluded |
+
+### Second iteration
+
+The ratio of allocating resource usage to power consumption are not the same across different systems.
+In the first iteration, we defined our default model. This represents our fallback.
+
+In order to improve the accuracy of the formula, it should be possible to parameterize it.
+This means that if the CPU, type of memory, storage, etc. is known and we have a specific, verified measurement on the allocation, we can take that instead of using the default assumption.
+
+This would require, that a tool exists, which given a standard usage scenario, can measure the resource allocation distribution on a computer or server system.
+Second it would require that a public database exists from which those values can be pulled.
+
+This is similiar to [spec.org](https://spec.org) ([example here](https://www.spec.org/power_ssj2008/results/res2020q1/power_ssj2008-20191125-01012.html)), however not about CPU power consumption, but all components of the system and their respective share of the total power consumption of the system in various usage scenarios. 
