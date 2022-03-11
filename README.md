@@ -2,6 +2,8 @@
 
 This repository contains the source code of the work on the specification for (1) calculating the carbon footprint of server-side applications and (2) an API reference on how to expose the footprint as an API within IT infrastructure software of the [Digital Carbon Footprint Steering Group][1] (SG) of the [SDIA][2].
 
+[Read more about our approach on our blog.](https://blog.sdialliance.org/steering-group-update-environmental-footprint-framework-for-server-side-applications)
+
 The repository include specifications, use cases and requirements, best practices and guidelines, primers and notes. The SG's Work Items are linked from the SG homepage.
 
 This repository contains of two parts:
