@@ -23,7 +23,7 @@ This repository contains of two parts:
 
 ## Approach & Architecture
 
-When a server-side application is running, it is consuming resources - such as CPU time, memory and storage capacity. These resources are produced by physical IT infrastructure - physical servers sitting inside data centers or server rooms. The resources are often managed by virtualization or container orechestration platforms, or both. Each virtual resource unit is produced by a physical server, which comes with an embedded (e.g. from manufacturing or transport) and operational footprint (e.g. from the electricity needed to produce it). The server itself, also requires physical infrastructure, such as a building, electricity and cooling, in order to be able to produce resources. 
+When a server-side application is running, it is consuming resources - such as CPU time, memory and storage capacity. These resources are produced by physical IT infrastructure - physical servers sitting inside data centers or server rooms. The resources are often managed by virtualization or container orchestration platforms, or both. Each virtual resource unit is produced by a physical server, which comes with an embedded (e.g. from manufacturing or transport) and operational footprint (e.g. from the electricity needed to produce it). The server itself, also requires physical infrastructure, such as a building, electricity and cooling, in order to be able to produce resources. 
 
 Therefore, each resource (CPU time, memory, storage) that a server-side application is consuming, comes with a measurable environmental & social costs which this project aims to expose to the application through an API within the IT infrastructure. 
 
