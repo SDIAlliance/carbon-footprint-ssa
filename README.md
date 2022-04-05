@@ -1,14 +1,14 @@
-# An API & open standard for measuring carbon footprint for server-side software applications (SSAs)
+# An API specification for exposing the environmental footprint for server-side software applications (SSAs)
 
-This repository contains the source code of the work on the specification for (1) calculating the carbon footprint of server-side applications and (2) an API reference on how to expose the footprint as an API within IT infrastructure software of the [Digital Carbon Footprint Steering Group][1] (SG) of the [SDIA][2].
+This repository contains (1) the methodology for calculating the environmental footprint (including carbon emissions) of server-side applications and (2) the API specification on how to expose the measured footprint as an API within IT infrastructure software. The specification is developed and governed by the [Digital Carbon Footprint Steering Group][1] (SG) of the [SDIA][2].
 
 [Read more about our approach on our blog.](https://blog.sdialliance.org/steering-group-update-environmental-footprint-framework-for-server-side-applications)
 
-The repository include specifications, use cases and requirements, best practices and guidelines, primers and notes. The SG's Work Items are linked from the SG homepage.
+The repository include methodology, specifications, use cases and requirements, best practices and guidelines, primers and notes. The SG's Work Items are linked from the SG homepage.
 
 This repository contains of two parts:
 
-* An open standard specification for measuring & assembling the carbon footprint
+* An methodology for measuring & assembling the environmental footprint
 * A REST API specification to expose the footprint within IT infrastructure (e.g. within a container or virtualization platform)
 
 ## Table of Contents
@@ -33,7 +33,7 @@ Therefore we have chosen (for now) to build an architecture around the [Observer
 
 ![Architecture Diagram](https://docs.google.com/drawings/d/e/2PACX-1vTL2svMiZCM1z1DRSv7A90_qCyT8Q6bvcAcuroxOly8hgRxfzdIKS6t-CVSAK7sEc1kWs549degfBjk/pub?w=1552&amp;h=843)
 
-The observer (The Environmental Footprint Data Agent - EFD-Agent) thus records three types of time-series through observation:
+The observer (The Environmental Footprint Data Agent - EDA) thus records three types of time-series through observation:
 
 * A time-series of [power consumption](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/power_consumption_resolver.md) (kW per second)
 * A time-series of resource utilization (CPU, memory, storage & network capacity) of a pod or virtual machine
@@ -41,24 +41,22 @@ The observer (The Environmental Footprint Data Agent - EFD-Agent) thus records t
 
 Combining these three time series with a [solver that attributes the different resource types to the power consumption](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/resource_allocation_resolver.md) (e.g. 60% to CPU, 20% to memory, 10% to storage, 10% to the network) then leads us to be able to determine how much power a pod or virtual machine was consuming, based on it’s resource use, while it was running. Even better: It allows us to measure the opposite as well - how much power was wasted on idling/non-use of available resources.
 
+An implementation of the EDA is currently [developed by Helio](https://github.com/helio/k8s-eda-implementation).
+
 * [The solver is described further in this document](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/resource_allocation_resolver.md)
 * [Our approach & fallback to power consumption measurement is here](https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/power_consumption_resolver.md)
 
-The API specification in this repository defines the APIs necessary within the EFD Agent:
+The API specification in this repository defines the APIs necessary within the EDA Agent:
 
-* Kubernetes Pod Registry API - to record start/stop and run times of each pod
-* Kubernetes Pod Resource API - to record the resource allocation/usage of each pod
-* Server Power Consumption API - to record the power consumption of the server
+* [Environmental Footprint Query API](https://sdia.stoplight.io/docs/carbon-footprint-ssa-rest-api/b3A6MzgzMzM5OTQ-get) - to query the environmental footprint of a VM or a Pod
 
-\# TODO: Add the actual links to the API specs.
+### Where does the EDA run?
 
-### Where does the EFD-Agent run?
+Of course, given the virtualized nature of today’s IT infrastructure, the EDA itself can be running within the IT infrastructure that is being monitored itself. Meaning it can be deployed within the same Kubernetes cluster that it observes. 
 
-Of course, given the virtualized nature of today’s IT infrastructure, the EFD Agent itself can be running within the IT infrastructure that is being monitored itself. Meaning it can be deployed within the same Kubernetes cluster that it observes. 
+This also means that the EDA is being observed itself - by itself and can determine its power consumption - which should be considered overhead and to work towards minimizing this overhead.
 
-This also means that the EFD-Agent is being observed itself - by itself and can determine its power consumption - which should be considered overhead and to work towards minimizing this overhead.
-
-The role of the EFD-Agent can also be assumed by existing systems, such as the virtualization layer (e.g. OpenStack or VMWare) or it can be assumed by the physical infrastructure (e.g. the Data Center Infrastructure Management System - DCIM). As long as the physical server, the pods or virtual machines are able to reach the agent, it’s actual location is not important.
+The role of the EDA can also be assumed by existing systems, such as the virtualization layer (e.g. OpenStack or VMWare) or it can be assumed by the physical infrastructure (e.g. the Data Center Infrastructure Management System - DCIM). As long as the physical server, the pods or virtual machines are able to reach the agent, it’s actual location is not important.
 
 <a name="scope"></a>
 
@@ -77,9 +75,9 @@ In the first version, we have decided to **focus on the server itself**, while u
 
 ### Open Data Hub (ODH)
 
-The open data hub, operated as a public data repository by the [SDIA][9] is used by the CF-Agent to enrich the collected information from the physical infrastructure. As an example, the ODH contains a database of server hardware and its embedded emissions. It also provides real-time APIs for the CO2-concentration of electricity for different locations.
+The open data hub, operated as a public data repository by the [SDIA][9] is used by the EDA to enrich the collected information from the physical infrastructure. As an example, the ODH contains a database of server hardware and its embedded emissions. It also provides real-time APIs for the CO2-concentration of electricity for different locations.
 
-* ODH API specification: https://github.com/sdialliance/carbon-footprint-agent-api
+* Boavitza API for embodied carbon of server hardware
 
 <a name="footprint"></a>
 
