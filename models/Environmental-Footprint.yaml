@@ -45,4 +45,4 @@ properties:
 required:
   - total_calculated_emissions
   - emission_calculation_data
-description: The data model for returning carbon footproint information for a request. It contains the total carbon emissions as well as the data that was used to calculate it (to ensure transparency).
+description: The data model for returning environmental footproint information for a request. It contains the total carbon emissions as well as the data (mainly electricity and embodied carbon) that was used to calculate it (to ensure transparency).

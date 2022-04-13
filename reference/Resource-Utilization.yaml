@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Resource Utilization
+  title: Resource Utilization API
   version: 1.0.0
   summary: Use this API to report resource utilization metrics
   description: 'The Resource Usage API is used to report the actually used resources by a pod, container, virtual or even dedicated machine. Resource usage is expressed in 4 metrics: CPU Utilization (%), Memory (MB), Storage (GB), Network Bandwidth (kbps).'

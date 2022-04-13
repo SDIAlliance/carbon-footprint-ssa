@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: Physical Machines API
+  version: 1.0.0
+  description: This API is used to enroll physical machines to be monitored and considered by the EDA. You can also use this API to retrieve the physical machines that are currently part of the EDA.
+  summary: API to enroll & list physical machines in the EDA measuring sphere.
+  contact:
+    name: Team SDIA
+    url: 'https://sdialliance.org'
+    email: team@sdialliance.org
+  license:
+    name: GNU v3
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /physical-machine:
+    post:
+      summary: Create New User
+      operationId: post-physical-machine
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                New User Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    dateOfBirth: '1996-08-24'
+                    emailVerified: false
+                    createDate: '2020-11-18'
+        '400':
+          description: Missing Required Information
+        '409':
+          description: Email Already Taken
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Physical-Machine.yaml
+            examples: {}
+        description: Post the necessary fields for the API to create a new user.
+      description: Create a new physical machine.
+    parameters: []
+components:
+  schemas: {}

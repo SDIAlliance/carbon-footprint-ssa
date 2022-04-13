@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Query
+  title: Query API
   version: 1.0.0
   summary: 'The query API allows you to determine the carbon footprint for different types of scenarios (time-baed or machine-based). '
   description: |-
@@ -20,7 +20,7 @@ paths:
     get:
       summary: Get
       operationId: get-query
-      description: 'Get the carbon footprint for a machine, pod or timeframe.'
+      description: 'Get the environmental footprint for a machine, pod or timeframe.'
       parameters:
         - schema:
             type: string

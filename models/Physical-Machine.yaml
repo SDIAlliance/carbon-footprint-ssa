@@ -1,0 +1,6 @@
+title: Physical Machine
+type: object
+properties:
+  id:
+    type: string
+description: The data model for storing the information about all the physical machines that are part of the infrastructure in which the EDA is running.
