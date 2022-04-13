@@ -2,13 +2,13 @@ openapi: 3.1.0
 info:
   title: Query API
   version: 1.0.0
-  summary: 'The query API allows you to determine the carbon footprint for different types of scenarios (time-baed or machine-based). '
+  summary: 'The query API allows you to determine the environmental footprint for different types of scenarios (time-baed or machine-based). '
   description: |-
-    Use this API to get the carbon footprint for your any operation happening on the server.
+    Use this API to get the environmental footprint for your any operation happening on the server.
 
     You can use a time-based query in order to get the carbon emissions that have been created during the processing of a request or a background operation (e.g. making a thumbnail).
 
-    If you simply want the carbon footprint of a running pod or virtual machine, from when it started to now (or to when it stopped), you can query using the pod or virtual machine identifier.
+    If you simply want the environmental footprint of a running pod or virtual machine, from when it started to now (or to when it stopped), you can query using the pod or virtual machine identifier.
   license:
     name: GPL v3
     url: 'https://github.com/SDIAlliance/carbon-footprint-ssa/blob/main/LICENSE'
@@ -58,7 +58,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/Carbon-Footprint.yaml
+                $ref: ../models/Environmental-Footprint.yaml
         '400':
           description: Bad Request
           content:
