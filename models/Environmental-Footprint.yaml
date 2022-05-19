@@ -5,8 +5,9 @@ examples:
     total_power_consumption: 5423
     total_embedded_emissions: 12
     total_operational_emissions: 111
+description: The data model for returning environmental footproint information for a request. It contains the total carbon emissions as well as the data (mainly electricity and embodied carbon) that was used to calculate it (to ensure transparency).
 properties:
-  total_calculated_emissions:
+  calculated_emissions:
     type: number
     description: 'Contains the total emissions in kilograms, considering power consumption and embedded emissions of your request.'
     format: float
@@ -17,19 +18,19 @@ properties:
     description: Contains the detailed information that was used to calculate the emissions for your query.
     additionalProperties: false
     properties:
-      total_power_consumption:
+      energy_consumption:
         type: number
         description: 'Returns the total power consumption attributed to the query, pod, virtual machine or server. It contains the overhead power consumption of the underlying data center (if available, otherwise uses a constant), all in kWh'
         format: float
         default: 0
         readOnly: true
-      total_embedded_emissions:
+      embodied_emissions:
         type: number
         description: Returns only the embedded emissions in kilograms of the underlying server
         format: float
         default: 0
         readOnly: true
-      total_operational_emissions:
+      operational_emissions:
         type: number
         description: Returns only the emissions caused by the electricity (based on available information of the power grid in the location of the data center) in kilograms
         format: float
@@ -43,6 +44,5 @@ properties:
         readOnly: true
     readOnly: true
 required:
-  - total_calculated_emissions
+  - calculated_emissions
   - emission_calculation_data
-description: The data model for returning environmental footproint information for a request. It contains the total carbon emissions as well as the data (mainly electricity and embodied carbon) that was used to calculate it (to ensure transparency).
