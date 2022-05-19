@@ -36,6 +36,26 @@ properties:
     description: Specify the metric name for each power feed to measure energy (TODO be clear on how measure kWh)
     items:
       type: string
+  exports_thermal_energy:
+    type: boolean
+    default: false
+    description: 'Specify whether your facility is exporting heat, e.g. to a district heating system. If set to true, supply the metric endpoint to measure heat volume & temperature.'
+  thermal_energy_export_volume_metric:
+    type: string
+    example: thermal_energy_export_meter_volume
+    description: Specify on which Promotheus metric the thermal energy volumes will be reported (in joules)
+  thermal_energy_export_temperature_metric:
+    type: string
+    example: thermal_energy_export_meter_temp
+    description: Specify on which Promotheus metric temperature measures will be reported (in Celsius)
+  has_ups_systems:
+    type: boolean
+    default: false
+    description: Define if the facility has a UPS system installed (you can register them in the inventory)
+  has_backup_generators:
+    type: boolean
+    default: false
+    description: Define if the facility has backup generators installed (you can register them in the inventory)
 required:
   - geo_latitude
   - geo_longitude

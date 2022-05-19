@@ -1,0 +1,42 @@
+title: UPS System
+type: object
+description: |-
+  A UPS system, most often a battery system, supplies a facility with uninterruptable power supply in case the grid power feeds have failed. They often act as a buffer before the backup generators can take over, or in some cases are the sole backup power system.
+
+  Using the battery_chemistry, manufacturer and model type we determine the pollution and embodied carbon automaticaly.
+properties:
+  id:
+    type: string
+    format: uuid
+    readOnly: true
+  name:
+    type: string
+    description: 'Optional: Name your backup generator'
+  battery_type:
+    type: string
+    description: 'TODO: List all available battery types (for which we have emission factors)'
+    writeOnly: true
+  charge_energy_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus for the charge energy into the battery (in kWh)
+  discharge_energy_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus for the energy discharge (in kWh)
+  ups_state_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus on the state of the UPS system (running/not running)
+  manufacturer_name:
+    type: string
+    description: Name of the manufacturer of the backup generator
+    example: Vertiv
+  model_identifier:
+    type: string
+    example: 4R0113 DS125
+    description: Define the model identified of the generator as specified by the manufacturer
+required:
+  - battery_type
+  - charge_energy_metric
+  - discharge_energy_metric
+  - ups_state_metric
+  - manufacturer_name
+  - model_identifier
