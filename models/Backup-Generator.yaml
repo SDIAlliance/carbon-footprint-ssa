@@ -1,0 +1,42 @@
+title: Backup Generator
+type: object
+description: |-
+  A backup generator supplies a facility with emergency power in case the grid power feeds have failed.
+
+  Using the fuel_type, manufacturer and model type we determine the pollution and embodied carbon automaticaly.
+properties:
+  id:
+    type: string
+    format: uuid
+    readOnly: true
+  name:
+    type: string
+    description: 'Optional: Name your backup generator'
+  fuel_type:
+    type: string
+    description: 'TODO: List all available fuel types (for which we have emission factors)'
+    writeOnly: true
+  fuel_consumption_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus for the fuel consumption (in liters)
+  power_production_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus for the power production (in kWh)
+  generator_state_metric:
+    type: string
+    description: Specify the name of the metric reported to Prometheus on the state of the backup generator (running/not running)
+  manufacturer_name:
+    type: string
+    description: Name of the manufacturer of the backup generator
+    example: mtu
+  model_identifier:
+    type: string
+    example: 4R0113 DS125
+    description: Define the model identified of the generator as specified by the manufacturer
+required:
+  - fuel_type
+  - fuel_consumption_metric
+  - power_production_metric
+  - generator_state_metric
+  - manufacturer_name
+  - model_identifier
